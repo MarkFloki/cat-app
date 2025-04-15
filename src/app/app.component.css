@@ -1,13 +1,13 @@
 button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #ffcc00;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #ff9900;
-  }
-  
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #ffc107;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #ff9800;
+}

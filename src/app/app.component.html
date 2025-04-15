@@ -1,9 +1,12 @@
-<div style="text-align:center; margin-top: 50px;">
+<div style="text-align:center; margin-top: 30px;">
   <h1>😺 Random Cat</h1>
 
-  <button (click)="getRandomCat()">Рандом котик</button>
+  <button (click)="getRandomCat()" *ngIf="!showFavorites">Рандом котик</button>
+  <button (click)="toggleFavorites()">
+    {{ showFavorites ? 'Назад' : 'Обране' }} ({{ favorites.length }})
+  </button>
 
-  <div style="margin-top: 20px;" *ngIf="catUrl">
+  <div *ngIf="!showFavorites && catUrl" style="margin-top: 20px;">
     <img
       [src]="catUrl"
       alt="Random cat"
@@ -11,5 +14,18 @@
       height="300"
       style="border-radius: 8px; object-fit: cover;"
     >
+    <div style="margin-top: 10px;">
+      <button (click)="addToFavorites()">❤️ Зберегти</button>
+    </div>
   </div>
-</div>
+
+  <div *ngIf="showFavorites" style="margin-top: 20px;">
+    <h2>💖 Обрані котики</h2>
+    <div *ngIf="favorites.length === 0">Поки що немає обраних котиків 😿</div>
+  
+    <div *ngFor="let cat of favorites" style="margin: 10px;">
+      <img [src]="cat" width="300" height="220" style="border-radius: 8px; object-fit: cover;">
+      <br>
+      <button (click)="removeFromFavorites(cat)" style="margin-top: 5px;">🗑️ Видалити</button>
+    </div>
+  </div>
